@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block container %}
+<div style="padding: 20px; max-width: 600px;">
+    <h2>Add a New Book</h2>
+
+<form method="POST" action="{{ url_for('create_post') }}">
+            <div style="margin-bottom: 12px;">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required style="width:100%; padding:6px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label for="author">Author:</label><br>
+                <input type="text" id="author" name="author" required style="width:100%; padding:6px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label for="isbn">ISBN:</label><br>
+                <input type="text" id="isbn" name="isbn" required style="width:100%; padding:6px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label for="price">Price:</label><br>
+                <input type="number" id="price" name="price" step="0.01" min="0" required style="width:100%; padding:6px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label for="image">Image Filename:</label><br>
+                <input type="text" id="image" name="image" placeholder="example.jpg" required style="width:100%; padding:6px;">
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <label for="categoryId">Category:</label><br>
+                <select id="categoryId" name="categoryId" required style="width:100%; padding:6px;">
+    {% for cat in categories %}
+      <option value="{{ cat['id'] }}">{{ cat['name'] }}</option>
+              {% endfor %}
+                          </select>
+                      </div>
+
+                      <div style="margin-bottom: 12px;">
+              <label for="readNow">Read Now (0 or 1):</label><br>
+                            <select id="readNow" name="readNow" style="width:100%; padding:6px;">
+                                <option value="0">0 - Not available</option>
+                                <option value="1">1 - Available online</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" style="padding:8px 20px; background:#28a745; color:white; border:none; cursor:pointer;">Add Book</button>
+                <a href="{{ url_for('read') }}" style="margin-left:10px;">Cancel</a>
+                        </form>
+                    </div>
+                    {% endblock %}
