@@ -1,9 +1,8 @@
-{% extends 'base.html' %} {% block container %}
-<h2>Uh oh!</h2>
-
-<p>
-
-  Unfortunately, it seems that we have encountered an error... and here it is:
-</p>
-<code> {{error}} </code>
-{% endblock %}
+{% extends 'base.html' %}
+{% block container %}
+<div style="padding: 20px;">
+      <h2 style="color: red;">Error</h2>h2>
+      <p>{{ error }}</p>
+    <p><a href="{{ url_for('home') }}">Return to Home</a>a></p>
+</div>div>
+{% endblock %}</p></p>
